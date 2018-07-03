@@ -27,6 +27,6 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-    compile('org.springframework.boot:spring-boot-starter-social-twitter')
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-social-twitter', version: '1.5.14.RELEASE')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
