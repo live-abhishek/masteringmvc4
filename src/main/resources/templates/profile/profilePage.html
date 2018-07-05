@@ -11,19 +11,19 @@
         <form th:action="@{/profile}" method="post" class="col m8 s12 offset-m2" th:object="${profileForm}">
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="text" id="twitterHandle" th:field="${profileForm.twitterHandle}" th:errorclass="invalid">
+                    <input type="text" id="twitterHandle" th:field="${profileForm.twitterHandle}" th:errorclass="invalid" required="required">
                     <label for="twitterHandle" th:text="#{twitter.handle}">Last Name</label>
                     <div th:errors="*{twitterHandle}" class="red-text">Error</div>
                 </div>
                 <div class="input-field col s6">
-                    <input id="email" type="text" th:field="${profileForm.email}" th:errorclass="invalid"/>
+                    <input id="email" type="email" th:field="${profileForm.email}" th:errorclass="invalid" required="required"/>
                     <label for="email" th:text="#{email}">Email</label>
                     <div th:errors="*{email}" class="red-text">Error</div>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="birthDate" type="text" th:field="${profileForm.birthDate}" th:placeholder="${dateFormat}" th:errorclass="invalid"/>
+                    <input id="birthDate" type="text" th:field="${profileForm.birthDate}" th:placeholder="${dateFormat}" th:errorclass="invalid" required="required"/>
                     <label for="birthDate" th:text="#{birthdate}">Birth Date</label>
                     <div th:errors="*{birthDate}" class="red-text">Error</div>
                 </div>
@@ -59,6 +59,16 @@
             </div>
         </form>
     </div>
+
+    <script layout:fragment="script">
+        $('button').bind('click', function(e){
+            if(e.currentTarget.name === 'save'){
+                $(e.currentTarget.form).removeAttr('novalidate');
+            } else {
+                $(e.currentTarget.form).attr('novalidate', 'novalidate');
+            }
+        });
+    </script>
 
 </body>
 </html>
